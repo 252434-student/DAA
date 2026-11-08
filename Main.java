@@ -5,6 +5,8 @@ public class Main{
         Algorithms.Naive naive = new Algorithms.Naive();
         //naive.naive("aaaaaa","aaa");
         Algorithms.KMP kmp = new Algorithms.KMP();
-        //kmp.KMPSearch("ABC","AAABCAAA");
+        //kmp.KMPSearch("aaaaaabcaababc","abc");
+        Algorithms.RabinKarp rk  = new Algorithms.RabinKarp();
+        //rk.RK("aaababcababc", "abc");
     }
 }
