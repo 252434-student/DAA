@@ -403,31 +403,27 @@ public class Algorithms {
                 return g[answer][ch];
             }
 
-            static void searchWords(String arr[], int k,
-                                    String text)
-            {
-                buildMatchingMachine(arr, k);
+            public void performAho(String[] pattern, String[] text) {
+                int[][] count = new int[pattern.length][text.length];
+                int k = pattern.length, l = text.length;
+                buildMatchingMachine(pattern, k);
 
                 int currentState = 0;
+                for (int a = 0; a < l; ++a) {
+                    for (int i = 0; i < text[a].length(); ++i) {
+                        currentState = findNextState(currentState,
+                                text[a].charAt(i));
 
-                for(int i = 0; i < text.length(); ++i)
-                {
-                    currentState = findNextState(currentState,
-                            text.charAt(i));
-
-                    if (out[currentState] == 0)
-                        continue;
-                    for(int j = 0; j < k; ++j)
-                    {
-                        if ((out[currentState] & (1 << j)) > 0)
-                        {
-                            System.out.print("Word " +  arr[j] +
-                                    " appears from " +
-                                    (i - arr[j].length() + 1) +
-                                    " to " +  i + "\n");
+                        if (out[currentState] == 0)
+                            continue;
+                        for (int j = 0; j < k; ++j) {
+                            if ((out[currentState] & (1 << j)) > 0) {
+                                count[j][a] += 1;
+                            }
                         }
                     }
                 }
+                System.out.println("Count: "+ Arrays.deepToString(count));
             }
-    }//TODO output format
+    }
 }
