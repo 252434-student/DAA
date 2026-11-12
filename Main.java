@@ -33,6 +33,6 @@ public class Main{
 
         System.out.println("\n"+"=====AHO=====");
         Algorithms.Aho aho = new Algorithms.Aho();
-        aho.performAho(new String[]{"bana","a","na","a"},new String[]{"banana","ananas"});
+        aho.performAho(new String[]{"bana","a","na","a"},new String[]{"banana","ananas",""});
     }
 }
