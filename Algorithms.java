@@ -120,14 +120,14 @@ public class Algorithms {
             computeLPSArray(pat, M, lps);
 
             int i = 0;
+            ArrayList<Integer> match = new ArrayList<>();
             while (i < N) {
                 if (pat.charAt(j) == txt.charAt(i)) {
                     j++;
                     i++;
                 }
                 if (j == M) {
-                    System.out.println("KMP Found pattern "
-                            + "at index " + (i - j));
+                    match.add(i - j);
                     j = lps[j - 1];
                 } else if (i < N && pat.charAt(j) != txt.charAt(i)) {
                     if (j != 0)
@@ -136,6 +136,7 @@ public class Algorithms {
                         i = i + 1;
                 }
             }
+            System.out.println("KMP positions: " + match.toString());
         }
 
         void computeLPSArray(String pat, int M, int lps[]) {
@@ -169,12 +170,9 @@ public class Algorithms {
             int p = 0, t = 0, h = 1;
             ArrayList<Integer> ans = new ArrayList<>();
 
-            // Precompute h = pow(d, m-1) % q
             for (int i = 0; i < m - 1; i++)
                 h = (h * P) % MOD;
 
-            // Compute initial hash values for pattern and first
-            // window of text
             for (int i = 0; i < m; i++) {
                 p = (P * p + pat.charAt(i)) % MOD;
                 t = (P * t + text.charAt(i)) % MOD;
