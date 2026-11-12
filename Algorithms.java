@@ -60,7 +60,7 @@ public class Algorithms {
                     }
                 }
             }
-            System.out.print("Merge cost: " + dp[1][n]);
+            System.out.println("Merge cost: " + dp[1][n]);
         }
     }
 
